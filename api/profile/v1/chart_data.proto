@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package profile.v1;
+
+option go_package = "github.com/nartvt/profile-service/api/profile/v1;v1";
+
+message ListChartRequest {
+  string client_id = 1;
+  string user_id   = 2;
+}
+message ListChartResponse {
+  message Data {
+    uint32 timestamp  = 1;
+    string symbol     = 2;
+    string resolution = 3;
+    uint32 id         = 4;
+    string name       = 5;
+  }
+  string        status = 1;
+  repeated Data data   = 2;
+}
+
+message SaveChartRequest {
+  string client_id  = 1;
+  string user_id    = 2;
+  string name       = 3;
+  string content    = 4;
+  string symbol     = 5;
+  string resolution = 6;
+}
+message SaveChartResponse {
+  string status = 1;
+  uint32 id     = 2;
+}
+
+message SaveAsChartRequest {
+  string client_id  = 1;
+  string user_id    = 2;
+  uint32 chart_id   = 3;
+  string name       = 4;
+  string content    = 5;
+  string symbol     = 6;
+  string resolution = 7;
+}
+message SaveAsChartResponse { string status = 1; }
+
+message LoadChartRequest {
+  string client_id = 1;
+  string user_id   = 2;
+  uint32 chart_id  = 3;
+}
+message LoadChartResponse {
+  string  status = 1;
+  message Data {
+    string content   = 1;
+    uint32 timestamp = 2;
+    uint32 id        = 3;
+    string name      = 4;
+  }
+  Data data = 2;
+}
+
+message DeleteChartRequest {
+  string client_id = 1;
+  string user_id   = 2;
+  uint32 chart_id  = 3;
+}
+message DeleteChartResponse { string status = 1; }
+
+message ListStudyTemplateRequest {
+  string client_id = 1;
+  string user_id   = 2;
+}
+message ListStudyTemplateResponse {
+  string        status = 1;
+  message       Data { string name = 1; }
+  repeated Data data = 2;
+}
+
+message SaveStudyTemplateRequest {
+  string client_id = 1;
+  string user_id   = 2;
+  string name      = 3;
+  string content   = 4;
+}
+message SaveStudyTemplateResponse { string status = 1; }
+
+message LoadStudyTemplateRequest {
+  string client_id = 1;
+  string user_id   = 2;
+  uint32 chart_id  = 3;
+  string name      = 5;
+}
+message LoadStudyTemplateResponse {
+  string  status = 1;
+  message Data {
+    string name    = 1;
+    string content = 2;
+  }
+  Data data = 2;
+}
+
+message DeleteStudyTemplatesRequest {
+  string client_id = 1;
+  string user_id   = 2;
+  string name      = 4;
+}
+message DeleteStudyTemplatesResponse { string status = 1; }

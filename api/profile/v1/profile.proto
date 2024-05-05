@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package profile.v1;
+
+import "google/api/annotations.proto";
+import "profile/v1/chart_data.proto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/nartvt/profile-service/api/profile/v1;v1";
+
+service ProfileService {
+
+  rpc ListenUserAccount(ListenUserAccountRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post : "/internal/profile/v1/hook/user"
+      body : "*"
+    };
+  }
+
+  rpc GetUserProfile(google.protobuf.Empty) returns (GetUserProfileResponse) {
+    option (google.api.http) = {
+      get : "/api/profile/v1/info"
+    };
+  }
+
+  rpc GetUserProfileInternal(GetUserProfileInternalRequest) returns (GetUserProfileResponse) {
+    option (google.api.http) = {
+      post : "/internal/profile/v1/info"
+      body : "*"
+    };
+  }
+
+  rpc UpdateLanguage(UpdateLanguageRequest) returns (UpdateLanguageResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/language"
+      body : "*"
+    };
+  }
+
+  rpc GetListUserProfileInternal(GetListUserProfileInternalRequest) returns (GetListUserProfileResponse) {
+    option (google.api.http) = {
+      post : "/internal/profile/v1/list-info"
+      body : "*"
+    };
+  }
+}
+
+message ListenUserAccountRequest {
+  message User {
+    string                    id                 = 1;
+    string                    email              = 2;
+    string                    role               = 3;
+    bool                      is_sso_user        = 4;
+    google.protobuf.Timestamp email_confirmed_at = 5;
+    string                    phone              = 6;
+    google.protobuf.Timestamp phone_confirmed_at = 7;
+    google.protobuf.Struct    user_metadata      = 8;
+  }
+  string event         = 1;
+  string instance_id   = 2;
+  User   user          = 3;
+  string referral_code = 4;
+}
+
+message UserProfile {
+  string                    id                 = 1;
+  string                    email              = 2;
+  string                    role               = 3;
+  bool                      is_sso_user        = 4;
+  google.protobuf.Timestamp email_confirmed_at = 5;
+  string                    phone              = 6;
+  google.protobuf.Timestamp phone_confirmed_at = 7;
+  string                    full_name          = 8;
+  string                    language           = 9;
+  google.protobuf.Timestamp created_at         = 10;
+}
+
+message GetUserProfileResponse {
+  int64       code    = 1;
+  string      msg     = 2;
+  string      msg_key = 3;
+  UserProfile data    = 4;
+}
+
+message UpdateLanguageRequest { string language = 1; }
+
+message UpdateLanguageResponse {
+  int64       code    = 1;
+  string      msg     = 2;
+  string      msg_key = 3;
+  UserProfile data    = 4;
+}
+
+message GetUserProfileInternalRequest {
+  string user_id = 1;
+  string email   = 2;
+}
+
+message GetListUserProfileInternalRequest { repeated string user_ids = 1; }
+
+message GetListUserProfileResponse {
+  int64                code    = 1;
+  string               msg     = 2;
+  string               msg_key = 3;
+  repeated UserProfile data    = 4;
+}

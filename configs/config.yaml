@@ -1,0 +1,27 @@
+server:
+  http:
+    addr: ${HTTP_ADDR:0.0.0.0:8000}
+    timeout: 1s
+  grpc:
+    addr: ${GRPC_ADDR:0.0.0.0:9000}
+    timeout: 1s
+  auth:
+    required: true
+    excludes: "/profile.v1.ProfileService/ListenUserAccount,/profile.v1.ProfileService/GetUserProfileInternal,/profile.v1.ProfileService/GetListUserProfileInternal"
+data:
+  database:
+    driver: ${DB_DRIVER:postgres}
+    source: ${DB_SOURCE:"postgresql://taitran:root@localhost:5432/referral?sslmode=disable"}
+  redis:
+    addr: ${REDIS_ADDR:127.0.0.1:6379}
+    pass: ${REDIS_PASS:}
+    ssl: ${REDIS_SSL:false}
+    db: ${REDIS_DB:0}
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+
+natServer:
+  url: ${NATS_HOST:localhost:4222}
+  topic:
+    new_profile_topic: ${NEW_PROFILE_TOPIC:profile-created}
+

@@ -1,0 +1,6 @@
+.env
+run.sh
+
+.git/
+
+.vscode

@@ -1,0 +1,557 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: ""
+    version: 0.0.1
+paths:
+    /api/profile/v1/chart/delete:
+        post:
+            tags:
+                - ChartService
+            operationId: ChartService_DeleteChart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.DeleteChartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.DeleteChartResponse'
+    /api/profile/v1/chart/list:
+        get:
+            tags:
+                - ChartService
+            operationId: ChartService_ListChart
+            parameters:
+                - name: clientId
+                  in: query
+                  schema:
+                    type: string
+                - name: userId
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.ListChartResponse'
+    /api/profile/v1/chart/load:
+        get:
+            tags:
+                - ChartService
+            operationId: ChartService_LoadChart
+            parameters:
+                - name: clientId
+                  in: query
+                  schema:
+                    type: string
+                - name: userId
+                  in: query
+                  schema:
+                    type: string
+                - name: chartId
+                  in: query
+                  schema:
+                    type: integer
+                    format: uint32
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.LoadChartResponse'
+    /api/profile/v1/chart/save:
+        post:
+            tags:
+                - ChartService
+            operationId: ChartService_SaveChart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.SaveChartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.SaveChartResponse'
+    /api/profile/v1/chart/save-as:
+        post:
+            tags:
+                - ChartService
+            operationId: ChartService_SaveAsChart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.SaveAsChartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.SaveAsChartResponse'
+    /api/profile/v1/info:
+        get:
+            tags:
+                - ProfileService
+            operationId: ProfileService_GetUserProfile
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.GetUserProfileResponse'
+    /api/profile/v1/language:
+        post:
+            tags:
+                - ProfileService
+            operationId: ProfileService_UpdateLanguage
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.UpdateLanguageRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.UpdateLanguageResponse'
+    /api/profile/v1/study-template/delete:
+        post:
+            tags:
+                - ChartService
+            operationId: ChartService_DeleteStudyTemplates
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.DeleteStudyTemplatesRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.DeleteStudyTemplatesResponse'
+    /api/profile/v1/study-template/list:
+        get:
+            tags:
+                - ChartService
+            operationId: ChartService_ListStudyTemplate
+            parameters:
+                - name: clientId
+                  in: query
+                  schema:
+                    type: string
+                - name: userId
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.ListStudyTemplateResponse'
+    /api/profile/v1/study-template/load:
+        get:
+            tags:
+                - ChartService
+            operationId: ChartService_LoadStudyTemplate
+            parameters:
+                - name: clientId
+                  in: query
+                  schema:
+                    type: string
+                - name: userId
+                  in: query
+                  schema:
+                    type: string
+                - name: chartId
+                  in: query
+                  schema:
+                    type: integer
+                    format: uint32
+                - name: name
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.LoadStudyTemplateResponse'
+    /api/profile/v1/study-template/save:
+        post:
+            tags:
+                - ChartService
+            operationId: ChartService_SaveStudyTemplate
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.SaveStudyTemplateRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.SaveStudyTemplateResponse'
+    /internal/profile/v1/hook/user:
+        post:
+            tags:
+                - ProfileService
+            operationId: ProfileService_ListenUserAccount
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.ListenUserAccountRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /internal/profile/v1/info:
+        post:
+            tags:
+                - ProfileService
+            operationId: ProfileService_GetUserProfileInternal
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.GetUserProfileInternalRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.GetUserProfileResponse'
+    /internal/profile/v1/list-info:
+        post:
+            tags:
+                - ProfileService
+            operationId: ProfileService_GetListUserProfileInternal
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/profile.v1.GetListUserProfileInternalRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/profile.v1.GetListUserProfileResponse'
+components:
+    schemas:
+        profile.v1.DeleteChartRequest:
+            type: object
+            properties:
+                clientId:
+                    type: string
+                userId:
+                    type: string
+                chartId:
+                    type: integer
+                    format: uint32
+        profile.v1.DeleteChartResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+        profile.v1.DeleteStudyTemplatesRequest:
+            type: object
+            properties:
+                clientId:
+                    type: string
+                userId:
+                    type: string
+                name:
+                    type: string
+        profile.v1.DeleteStudyTemplatesResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+        profile.v1.GetListUserProfileInternalRequest:
+            type: object
+            properties:
+                userIds:
+                    type: array
+                    items:
+                        type: string
+        profile.v1.GetListUserProfileResponse:
+            type: object
+            properties:
+                code:
+                    type: string
+                msg:
+                    type: string
+                msgKey:
+                    type: string
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/profile.v1.UserProfile'
+        profile.v1.GetUserProfileInternalRequest:
+            type: object
+            properties:
+                userId:
+                    type: string
+                email:
+                    type: string
+        profile.v1.GetUserProfileResponse:
+            type: object
+            properties:
+                code:
+                    type: string
+                msg:
+                    type: string
+                msgKey:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/profile.v1.UserProfile'
+        profile.v1.ListChartResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/profile.v1.ListChartResponse_Data'
+        profile.v1.ListChartResponse_Data:
+            type: object
+            properties:
+                timestamp:
+                    type: integer
+                    format: uint32
+                symbol:
+                    type: string
+                resolution:
+                    type: string
+                id:
+                    type: integer
+                    format: uint32
+                name:
+                    type: string
+        profile.v1.ListStudyTemplateResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/profile.v1.ListStudyTemplateResponse_Data'
+        profile.v1.ListStudyTemplateResponse_Data:
+            type: object
+            properties:
+                name:
+                    type: string
+        profile.v1.ListenUserAccountRequest:
+            type: object
+            properties:
+                event:
+                    type: string
+                instanceId:
+                    type: string
+                user:
+                    $ref: '#/components/schemas/profile.v1.ListenUserAccountRequest_User'
+                referralCode:
+                    type: string
+        profile.v1.ListenUserAccountRequest_User:
+            type: object
+            properties:
+                id:
+                    type: string
+                email:
+                    type: string
+                role:
+                    type: string
+                isSsoUser:
+                    type: boolean
+                emailConfirmedAt:
+                    type: string
+                    format: date-time
+                phone:
+                    type: string
+                phoneConfirmedAt:
+                    type: string
+                    format: date-time
+                userMetadata:
+                    type: object
+        profile.v1.LoadChartResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/profile.v1.LoadChartResponse_Data'
+        profile.v1.LoadChartResponse_Data:
+            type: object
+            properties:
+                content:
+                    type: string
+                timestamp:
+                    type: integer
+                    format: uint32
+                id:
+                    type: integer
+                    format: uint32
+                name:
+                    type: string
+        profile.v1.LoadStudyTemplateResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/profile.v1.LoadStudyTemplateResponse_Data'
+        profile.v1.LoadStudyTemplateResponse_Data:
+            type: object
+            properties:
+                name:
+                    type: string
+                content:
+                    type: string
+        profile.v1.SaveAsChartRequest:
+            type: object
+            properties:
+                clientId:
+                    type: string
+                userId:
+                    type: string
+                chartId:
+                    type: integer
+                    format: uint32
+                name:
+                    type: string
+                content:
+                    type: string
+                symbol:
+                    type: string
+                resolution:
+                    type: string
+        profile.v1.SaveAsChartResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+        profile.v1.SaveChartRequest:
+            type: object
+            properties:
+                clientId:
+                    type: string
+                userId:
+                    type: string
+                name:
+                    type: string
+                content:
+                    type: string
+                symbol:
+                    type: string
+                resolution:
+                    type: string
+        profile.v1.SaveChartResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+                id:
+                    type: integer
+                    format: uint32
+        profile.v1.SaveStudyTemplateRequest:
+            type: object
+            properties:
+                clientId:
+                    type: string
+                userId:
+                    type: string
+                name:
+                    type: string
+                content:
+                    type: string
+        profile.v1.SaveStudyTemplateResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+        profile.v1.UpdateLanguageRequest:
+            type: object
+            properties:
+                language:
+                    type: string
+        profile.v1.UpdateLanguageResponse:
+            type: object
+            properties:
+                code:
+                    type: string
+                msg:
+                    type: string
+                msgKey:
+                    type: string
+                data:
+                    $ref: '#/components/schemas/profile.v1.UserProfile'
+        profile.v1.UserProfile:
+            type: object
+            properties:
+                id:
+                    type: string
+                email:
+                    type: string
+                role:
+                    type: string
+                isSsoUser:
+                    type: boolean
+                emailConfirmedAt:
+                    type: string
+                    format: date-time
+                phone:
+                    type: string
+                phoneConfirmedAt:
+                    type: string
+                    format: date-time
+                fullName:
+                    type: string
+                language:
+                    type: string
+                createdAt:
+                    type: string
+                    format: date-time
+tags:
+    - name: ChartService
+    - name: ProfileService

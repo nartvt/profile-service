@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package profile.v1;
+
+import "google/api/annotations.proto";
+import "profile/v1/chart_data.proto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/nartvt/profile-service/api/profile/v1;v1";
+
+service ChartService {
+  rpc ListChart(ListChartRequest) returns (ListChartResponse) {
+    option (google.api.http) = {
+      get : "/api/profile/v1/chart/list"
+    };
+  }
+  rpc SaveChart(SaveChartRequest) returns (SaveChartResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/chart/save"
+      body : "*"
+    };
+  }
+  rpc SaveAsChart(SaveAsChartRequest) returns (SaveAsChartResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/chart/save-as"
+      body : "*"
+    };
+  }
+  rpc LoadChart(LoadChartRequest) returns (LoadChartResponse) {
+    option (google.api.http) = {
+      get : "/api/profile/v1/chart/load"
+    };
+  }
+  rpc DeleteChart(DeleteChartRequest) returns (DeleteChartResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/chart/delete"
+      body : "*"
+    };
+  }
+  rpc ListStudyTemplate(ListStudyTemplateRequest) returns (ListStudyTemplateResponse) {
+    option (google.api.http) = {
+      get : "/api/profile/v1/study-template/list"
+    };
+  }
+  rpc SaveStudyTemplate(SaveStudyTemplateRequest) returns (SaveStudyTemplateResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/study-template/save"
+      body : "*"
+    };
+  }
+  rpc LoadStudyTemplate(LoadStudyTemplateRequest) returns (LoadStudyTemplateResponse) {
+    option (google.api.http) = {
+      get : "/api/profile/v1/study-template/load"
+    };
+  }
+  rpc DeleteStudyTemplates(DeleteStudyTemplatesRequest) returns (DeleteStudyTemplatesResponse) {
+    option (google.api.http) = {
+      post : "/api/profile/v1/study-template/delete"
+      body : "*"
+    };
+  }
+}
